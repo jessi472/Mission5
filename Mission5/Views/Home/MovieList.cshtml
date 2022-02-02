@@ -1,0 +1,46 @@
+﻿<!--Jessica Kinghorn Mission 5 
+    Movie List -->
+@{
+    ViewData["Title"] = "MovieList";
+}
+
+@model List<MovieResponse>
+
+<h1 class="display-4">Joel's Movie List</h1>
+<br />
+
+<table class="table table-bordered table-striped">
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Category</td>
+            <td>Title</td>
+            <td>Year</td>
+            <td>Director First Name</td>
+            <td>Director Last Name</td>
+            <td>Rating</td>
+            <td>Edited?</td>
+            <td>Lent to:</td>
+            <td>Notes:</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+            {
+        <tr>
+            <td>@movie.Category.CategoryName</td>
+            <td>@movie.Title</td>
+            <td>@movie.Year</td>
+            <td>@movie.DirectorFirstName</td>
+            <td>@movie.DirectorLastName</td>
+            <td>@movie.Rating</td>
+            <td>@movie.Edited</td>
+            <td>@movie.LentTo</td>
+            <td>@movie.Notes</td>
+            <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@movie.MovieId">Edit</a></td>
+            <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@movie.MovieId">Delete</a></td>
+        </tr>
+            }
+    </tbody>
+</table>
